@@ -94,16 +94,18 @@ namespace View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var kelvin = (double)value;
-            var fahrenheit = ((kelvin - 273.15)*9/5) + 32;
-
+            //var fahrenheit = ((kelvin - 273.15)*9/5) + 32;
+            var fahrenheit = kelvin * 1.8 - 459.67;
             return fahrenheit;
         }
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var fahrenheit = double.Parse((String)value);
-            var kelvin = ((fahrenheit -32)*5/9)+273.15;
-
+            //var kelvin = ((fahrenheit -32)*5/9)+273.15;
+            var kelvin = (fahrenheit + 459.67) / 1.8;
             return kelvin;
         }
     }
 }
+
+
