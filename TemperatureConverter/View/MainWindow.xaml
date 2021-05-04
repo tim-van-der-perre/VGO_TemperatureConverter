@@ -32,6 +32,7 @@
             <Setter Property="Cursor" Value="Hand"/>
         </Style>
         <local:CelsiusConverter x:Key="celsiusConverter" />
+        <local:FahrenheitConverter x:Key="fahrenheitConverter" />
     </Window.Resources>
     
     
@@ -61,7 +62,7 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Fahrenheit" Style="{StaticResource labelstyle}" />
-            <TextBox Grid.Row="1" x:Name="fahrenheitTextbox" Style="{StaticResource textboxStyle}" />
+            <TextBox Grid.Row="1" x:Name="fahrenheitTextbox" Text="{Binding ElementName=slider, Path=Value, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource fahrenheitConverter}}" Style="{StaticResource textboxStyle}" />
             
         </Grid>
         <Grid>
@@ -73,8 +74,8 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="Kelvin" Style="{StaticResource labelstyle}" />
-            <TextBox Grid.Row="1" Text="{Binding ElementName=slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource textboxStyle}" />
+            <TextBox Grid.Row="1" x:Name="kelvinTextbox" Text="{Binding ElementName=slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource textboxStyle}" />
         </Grid>
-        <Slider x:Name="slider" Minimum="0" Maximum="1000" ValueChanged="SliderValueChanged"/>
+        <Slider x:Name="slider" Minimum="0" Maximum="1000"/>
     </StackPanel>
 </Window>
