@@ -25,22 +25,46 @@ namespace View
             InitializeComponent();
         }
 
-        private void ConvertToCelsius(object sender, RoutedEventArgs e)
+        private void ConvertFahrenheit(object sender, RoutedEventArgs e)
         {
-            var fahrenheitString = fahrenheittextBox.Text;
+            var fahrenheitString = fahrenheitTextbox.Text;
             var fahrenheit = double.Parse(fahrenheitString);
+
             var celsius = (fahrenheit - 32) * 5 / 9;
             var celsiusString = celsius.ToString();
-            celsiustextBox.Text = celsiusString;
+            celsiusTextbox.Text = celsiusString;
+
+            var kelvin = celsius + 273.15;
+            var kelvinString = kelvin.ToString();
+            kelvinTextbox.Text = kelvinString;
         }
 
-        private void ConvertToFahrenheit(object sender, RoutedEventArgs e)
+        private void ConvertCelsius(object sender, RoutedEventArgs e)
         {
-            var CelsiusString = celsiustextBox.Text;
+            var CelsiusString = celsiusTextbox.Text;
             var celsius = double.Parse(CelsiusString);
+
             var fahrenheit = (celsius* 9/5 ) + 32;
             var fahrenheitString = fahrenheit.ToString();
-            fahrenheittextBox.Text = fahrenheitString;
+            fahrenheitTextbox.Text = fahrenheitString;
+
+            var kelvin = celsius + 273.15;
+            var kelvinString = kelvin.ToString();
+            kelvinTextbox.Text = kelvinString;
+        }
+
+        private void ConvertKelvin(object sender, RoutedEventArgs e)
+        {
+            var kelvinString = kelvinTextbox.Text;
+            var kelvin = double.Parse(kelvinString);
+
+            var celsius = kelvin - 273.15;
+            var celsiusString = celsius.ToString();
+            celsiusTextbox.Text = celsiusString;
+
+            var fahrenheit = (celsius * 9 / 5) + 32;
+            var fahrenheitString = fahrenheit.ToString();
+            fahrenheitTextbox.Text = fahrenheitString;
         }
     }
 }
