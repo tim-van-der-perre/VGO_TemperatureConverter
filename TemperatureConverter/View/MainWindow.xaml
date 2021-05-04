@@ -7,11 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
-        <LinearGradientBrush x:Key="brush">
-             <LinearGradientBrush.StartPoint="0,0"/> 
-             <LinearGradientBrush.EndPoint="1,0"/>
-             <GradientStop Color="Gray" Offset="0"/>
-             <GradientStop Color="White" Offset="1" />
+        <LinearGradientBrush x:Key="brush" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="Gray" Offset="0"/>
+            <GradientStop Color="White" Offset="1" />
         </LinearGradientBrush>
     </Window.Resources>
     <StackPanel>
