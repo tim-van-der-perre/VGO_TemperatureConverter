@@ -19,32 +19,7 @@ namespace View
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public class CelsiusConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfoIetfLanguageTagConverter culture)
-        {
-            var kelvin = (double)value;
-            var celsius = kelvin - 273.15;
-            return celsius.ToString();
-        }
-
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfoIetfLanguageTagConverter culture)
-        {
-            var celsius = double.Parse((String)value);
-            var kelvin = celsius + 273.15;
-            return kelvin;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    
     public partial class MainWindow : Window
     {
 
@@ -107,5 +82,30 @@ namespace View
             fahrenheitTextbox.Text = fahrenheitString;
         }
     }
-    
+    public class CelsiusConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfoIetfLanguageTagConverter culture)
+        {
+            var kelvin = (double)value;
+            var celsius = kelvin - 273.15;
+            return celsius.ToString();
+        }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfoIetfLanguageTagConverter culture)
+        {
+            var celsius = double.Parse((String)value);
+            var kelvin = celsius + 273.15;
+            return kelvin;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
