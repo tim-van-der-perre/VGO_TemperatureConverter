@@ -26,7 +26,10 @@ namespace View
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         private double temperatureInKelvin;
         public double TemperatureInKelvin
@@ -40,6 +43,24 @@ namespace View
                 temperatureInKelvin = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(temperatureInKelvin)));
             }
+        }
+    } 
+    public class TemperatureConverter : IValueConverter
+    {
+        public ITemperatureScale TemperatureScale { get; set; }
+
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var kelvin = (double)value;
+
+            return this.TemperatureScale.ConvertFromKelvin(kelvin).ToString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var temperature = double.Parse((string)value);
+
+            return this.TemperatureScale.ConvertToKelvin(temperature);
         }
     }
     /*
@@ -120,25 +141,7 @@ public class FahrenheitConverter : IValueConverter
         return kelvin;
     }
 }
-    */
-    public class TemperatureConverter : IValueConverter
-    {
-        public ITemperatureScale TemperatureScale { get; set; }
-
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var kelvin = (double)value;
-
-            return this.TemperatureScale.ConvertFromKelvin(kelvin).ToString();
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            var temperature = double.Parse((string)value);
-
-            return this.TemperatureScale.ConvertToKelvin(temperature);
-        }
-    }
+   */
 }
 
 
