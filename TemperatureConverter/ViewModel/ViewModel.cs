@@ -23,7 +23,10 @@ namespace ViewModel
 
         public double TemperatureInKelvin
         {
-            get{return temperatureInKelvin;}
+            get
+            {
+                return temperatureInKelvin;
+            }
             set
             {
                 temperatureInKelvin = value;
@@ -67,8 +70,14 @@ namespace ViewModel
 
         public double Temperature
         {
-            get{return temperatureScale.ConvertFromKelvin(parent.TemperatureInKelvin);}
-            set{parent.TemperatureInKelvin = temperatureScale.ConvertToKelvin(value);}
+            get
+            {
+                return temperatureScale.ConvertFromKelvin(parent.TemperatureInKelvin);
+            }
+            set
+            {
+                parent.TemperatureInKelvin = temperatureScale.ConvertToKelvin(value);
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
